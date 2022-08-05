@@ -1,11 +1,6 @@
 on:
- push:
-    branches:
-    - main
-    - features/**
-    - dependabot/**
  schedule:
-    - cron: "*/10 * * * *"
+    - cron: "13 * * * *"
 jobs:
   coreTest:
     timeout-minutes: 10
@@ -22,7 +17,7 @@ jobs:
         &&echo "action_result= `cat result.file`" >> $GITHUB_ENV
     
     - name: Adding markdown
-      run: echo ‘### Hello world! :rocket:‘  >> $GITHUB_STEP_SUMMARY&& cat test.yml>$GITHUB_STEP_SUMMARY
+      run: date>>$GITHUB_STEP_SUMMARY&&cat test.yml>>$GITHUB_STEP_SUMMARY
 
     - name: Step 2 - Upload perf result
       uses: actions/upload-artifact@v2
