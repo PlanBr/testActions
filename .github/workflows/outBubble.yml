@@ -27,5 +27,5 @@ jobs:
     - name: Step 2 - Upload perf result
       uses: actions/upload-artifact@v2
       with: 
-          name: perf-res-$RES
-          path: wiki
+          name: perf-res-${{ env.action_result }}
+          path: result
