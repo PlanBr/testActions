@@ -1,13 +1,10 @@
 on:
  schedule:
-    - cron: "13 * * * *"
+    - cron: "*/5 * * * *"
 jobs:
   coreTest:
     timeout-minutes: 10
     runs-on: ubuntu-latest
-    env:
-       RES: 'empty_result'
-
     steps:
     - name: step 1  run perf on 1 core
       run: |
@@ -16,8 +13,8 @@ jobs:
         &&grep real-time test.yml | sed 's/[^0-9,/.]*//g'|cut -d . -f 1 >result.file\
         &&echo "action_result= `cat result.file`" >> $GITHUB_ENV
     
-    - name: Adding markdown
-      run: date>>$GITHUB_STEP_SUMMARY&&cat test.yml>>$GITHUB_STEP_SUMMARY
+    - name: Adding summary
+      run: date >>$GITHUB_STEP_SUMMARY&& cat test.yml>>$GITHUB_STEP_SUMMARY
 
     - name: Step 2 - Upload perf result
       uses: actions/upload-artifact@v2
