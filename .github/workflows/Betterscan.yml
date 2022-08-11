@@ -16,6 +16,6 @@ jobs:
       - name: Check Style 
       - uses: dbelyaev/action-checkstyle@v0.5.1
         with:
-          github_token: ${{ secrets.github_token }}
+          github_token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
           reporter: github-pr-review
           level: warning
