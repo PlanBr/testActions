@@ -13,3 +13,9 @@ jobs:
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: report.sarif
+      - name: Check Style 
+      - uses: dbelyaev/action-checkstyle@v0.5.1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          level: warning
